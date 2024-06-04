@@ -3,6 +3,8 @@
 
 #include <thread>
 #include <map>
+#include <curl/curl.h>
+
 #include "cookies.h"
 
 namespace cpr {
@@ -15,7 +17,7 @@ public:
     bool operator==(const Url& b) const {
         return url_ == b.url_;
     }
-private:
+
     std::string url_;
 };
 
@@ -33,6 +35,8 @@ struct Response {
     std::map<std::string, std::string> header;
     uint16_t status_code;
     Error error;
+
+    std::string __full_header;
 };
 
 } // namespace cpr
