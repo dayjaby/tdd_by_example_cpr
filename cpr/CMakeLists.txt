@@ -1,34 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
 add_library(cpr
-        accept_encoding.cpp
-        async.cpp
-        auth.cpp
-        bearer.cpp
-        callback.cpp
-        cert_info.cpp
-        cookies.cpp
-        cprtypes.cpp
-        curl_container.cpp
-        curlholder.cpp
-        error.cpp
-        file.cpp
-        multipart.cpp
-        parameters.cpp
-        payload.cpp
-        proxies.cpp
-        proxyauth.cpp
         session.cpp
-        threadpool.cpp
-        timeout.cpp
-        unix_socket.cpp
-        util.cpp
-        response.cpp
-        redirect.cpp
-        interceptor.cpp
-        ssl_ctx.cpp
-        curlmultiholder.cpp
-        multiperform.cpp)
+)
 
 add_library(cpr::cpr ALIAS cpr)
 
