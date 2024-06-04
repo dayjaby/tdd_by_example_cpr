@@ -1,3 +1,36 @@
+# TDD by example: Re-implementing cpr based on its tests
+
+This is the cpr project stripped to a minimum that it still compiles.
+
+## How to run:
+
+```bash
+mkdir build
+cd build
+cmake -DCPR_BUILD_TESTS=ON -DCPR_ENABLE_SSL=OFF -DCPR_BUILD_TESTS_SSL=OFF ..
+make -j4
+make test
+```
+
+## Lesson 1
+
+This lesson is about getting a basic GET command to run correctly, and thus passing the first test:
+
+```c++
+Url url{server->GetBaseUrl() + "/hello.html"};
+Response response = cpr::Get(url);
+std::string expected_text{"Hello world!"};
+EXPECT_EQ(expected_text, response.text);
+EXPECT_EQ(url, response.url);
+EXPECT_EQ(std::string{"text/html"}, response.header["content-type"]);
+EXPECT_EQ(200, response.status_code);
+EXPECT_EQ(ErrorCode::OK, response.error.code);
+```
+
+If you want to skip this lesson, checkout `lesson1_completed`.
+
+# Original Documentation
+
 # C++ Requests: Curl for People <img align="right" height="40" src="http://i.imgur.com/d9Xtyts.png">
 
 [![Documentation](https://img.shields.io/badge/docs-online-informational?style=flat&link=https://docs.libcpr.org/)](https://docs.libcpr.org/)
